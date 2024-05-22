@@ -2,7 +2,8 @@ import { Hono } from "hono";
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { sign } from 'hono/jwt'
-import { signupInput, signinInput } from "@joamon123/medium-common";
+import { signupInput } from "@joamon123/medium-common";
+
 
 export const userRouter = new Hono<{
     Bindings:{
@@ -40,6 +41,7 @@ userRouter.post('/signup', async (c) => {
   
     return c.json({jwt: token})
   }catch(e){
+    console.log(e);
     return c.text('Invalid credentials');
   }
   })

@@ -43,6 +43,15 @@ try{
     const blog =  await prisma.post.findFirst({
       where:{
           id: Number(id)
+      },
+      select:{
+        title:true,
+        content:true,
+        author:{
+          select:{
+            name:true,
+          }
+        }
       }
     })
 
@@ -62,7 +71,18 @@ blogRouter.get('/bulk', async (c)=>{
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate())
 
-  const blogs = await prisma.post.findMany()
+  const blogs = await prisma.post.findMany({
+    select: {
+      content: true,
+      title: true,
+      id: true,
+      author: {
+        select: {
+          name: true
+        }
+      }
+    }
+  })
 
     return c.json({
       blogs
