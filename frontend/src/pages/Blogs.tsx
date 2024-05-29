@@ -1,13 +1,15 @@
 import { BlogCard } from "../components/Blogcard"
 import { Appbar } from "../components/Appbar"
 import { useBlogs } from "../hooks/index";
+import { Skeleton } from "../components/skeleton";
 
 export const Blogs = () => {
   const {loading, blogs} = useBlogs();
 
   if(loading){
     return<div>
-      loading
+      <Appbar />
+      <Skeleton />
     </div>
   }
 
