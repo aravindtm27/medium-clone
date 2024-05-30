@@ -6,7 +6,7 @@ export const Blog =() => {
   const { id } = useParams();
   const {loading, blog} = useBlog({id: id || ""});
 
-  if(loading){
+  if(loading || !blog){
     return<div>
       loading
     </div>
@@ -14,6 +14,7 @@ export const Blog =() => {
 
   return (
     <div>
+      // @ts-ignore
       <BlogPage blog={blog}/>
     </div>
   )
