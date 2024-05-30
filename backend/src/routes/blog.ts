@@ -117,7 +117,7 @@ blogRouter.post('/', async (c) => {
           } 
         })
       return c.json({
-         blog
+         id:blog.id
       })
       }catch(e){
         console.log(e);
