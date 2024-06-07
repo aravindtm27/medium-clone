@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
 import { Avatar } from "./Blogcard"
 
+
+
 export const Appbar = () => {
     return <div className="border-b flex justify-between py-3 px-10">
         <Link to={'/blogs'}>
@@ -15,7 +17,13 @@ export const Appbar = () => {
             New Blog
             </button>
             </Link>
-            <Avatar size={"large"} name="Aravind"/>
+            <Link to={'/signin'}>    
+        <button type="button" 
+            className="text-white mr-6 bg-slate-600 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
+            Sign In
+            </button>
+            </Link>
+            <Avatar size={"large"} name="User"/>
         </div>
     </div>
 }
